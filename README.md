@@ -21,6 +21,7 @@
 </p>
 
 - [About](#about)
+- [Hosts](#hosts)
 - [Contributing](#contributing)
 - [See Also](#see-also)
 - [License](#license)
@@ -28,6 +29,10 @@
 ## About
 
 [NAHO](https://github.com/trueNAHO)'s [NixOS](https://nixos.org) configurations.
+
+## Hosts
+
+- [masterplan](/hosts/masterplan/README.md)
 
 ## Contributing
 
