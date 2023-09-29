@@ -36,6 +36,7 @@
             hooks = {
               alejandra.enable = true;
               convco.enable = true;
+              shellcheck.enable = true;
             };
 
             settings.alejandra.verbosity = "quiet";
