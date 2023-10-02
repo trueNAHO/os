@@ -11,7 +11,9 @@
           ../../modules/services/xserver/displayManager.nix
           ../../modules/sound.nix
           ../../modules/users/users/naho.nix
+          ./disko-config.nix
           ./hardware-configuration.nix
+          inputs.disko.nixosModules.disko
         ];
 
         modules = {

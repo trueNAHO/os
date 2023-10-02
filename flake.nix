@@ -2,6 +2,11 @@
   description = "NAHO's NixOS Flake";
 
   inputs = {
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko";
+    };
+
     flakeUtils.url = "github:numtide/flake-utils";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -36,14 +41,6 @@
             hooks = {
               alejandra.enable = true;
               convco.enable = true;
-              shellcheck.enable = true;
-
-              shfmt = {
-                enable = true;
-                entry =
-                  pkgs.lib.mkForce
-                  "${pkgs.shfmt}/bin/${pkgs.shfmt.pname} --case-indent --indent 2 --write";
-              };
             };
 
             settings.alejandra.verbosity = "quiet";
