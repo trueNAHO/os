@@ -58,7 +58,16 @@
         nixpkgs.config.allowUnfree = true;
         programs.dconf.enable = true;
         services.printing.enable = true;
-        system.stateVersion = "23.05";
+
+        system = {
+          autoUpgrade = {
+            enable = true;
+            flake = "github:trueNAHO/os#masterplan";
+          };
+
+          stateVersion = "23.05";
+        };
+
         time.timeZone = "Europe/Luxembourg";
       }
     ];
