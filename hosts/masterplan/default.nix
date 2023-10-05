@@ -69,6 +69,7 @@
         };
 
         time.timeZone = "Europe/Luxembourg";
+        users.mutableUsers = false;
       }
     ];
   };
