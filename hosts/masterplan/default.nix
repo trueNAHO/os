@@ -7,6 +7,7 @@
           ../../modules/networking.nix
           ../../modules/nix/optimisation.nix
           ../../modules/nix/settings/flake.nix
+          ../../modules/services/auto-cpufreq.nix
           ../../modules/services/xserver/desktopManager.nix
           ../../modules/services/xserver/displayManager.nix
           ../../modules/sound.nix
@@ -27,9 +28,13 @@
             optimisation.enable = true;
           };
 
-          services.xserver = {
-            desktopManager.enable = true;
-            displayManager.enable = true;
+          services = {
+            auto-cpufreq.enable = true;
+
+            xserver = {
+              desktopManager.enable = true;
+              displayManager.enable = true;
+            };
           };
 
           sound.enable = true;
