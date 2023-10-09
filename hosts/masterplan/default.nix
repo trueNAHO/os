@@ -5,8 +5,8 @@
         imports = [
           "${inputs.impermanence}/nixos.nix"
           ../../modules/networking.nix
+          ../../modules/nix/flake.nix
           ../../modules/nix/optimisation.nix
-          ../../modules/nix/settings/flake.nix
           ../../modules/services/auto-cpufreq.nix
           ../../modules/services/openssh.nix
           ../../modules/services/xserver/desktopManager.nix
