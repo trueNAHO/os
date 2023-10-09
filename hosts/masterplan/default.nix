@@ -8,6 +8,7 @@
           ../../modules/nix/optimisation.nix
           ../../modules/nix/settings/flake.nix
           ../../modules/services/auto-cpufreq.nix
+          ../../modules/services/openssh.nix
           ../../modules/services/xserver/desktopManager.nix
           ../../modules/services/xserver/displayManager.nix
           ../../modules/sound.nix
@@ -31,6 +32,7 @@
 
           services = {
             auto-cpufreq.enable = true;
+            openssh.enable = true;
 
             xserver = {
               desktopManager.enable = true;
