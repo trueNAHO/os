@@ -90,6 +90,22 @@
         "type": "github"
       }
     },
+    "nixosHardware": {
+      "locked": {
+        "lastModified": 1696865220,
+        "narHash": "sha256-p7+zM0kpck3BHdbdjUC6/027GzXBFGPyjVOLr+jRzTg=",
+        "owner": "trueNAHO",
+        "repo": "nixos-hardware",
+        "rev": "cbbdc22fb645e84f93e925831de0ee92a7637822",
+        "type": "github"
+      },
+      "original": {
+        "owner": "trueNAHO",
+        "ref": "tuxedo-pulse-15-gen-2",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1695830400,
@@ -140,6 +156,7 @@
         "disko": "disko",
         "flakeUtils": "flakeUtils",
         "impermanence": "impermanence",
+        "nixosHardware": "nixosHardware",
         "nixpkgs": "nixpkgs",
         "preCommitHooks": "preCommitHooks"
       }

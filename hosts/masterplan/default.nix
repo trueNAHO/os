@@ -15,6 +15,7 @@
           ./disko-config.nix
           ./hardware-configuration.nix
           inputs.disko.nixosModules.disko
+          inputs.nixosHardware.nixosModules.tuxedo-pulse-15-gen2
         ];
 
         modules = {
