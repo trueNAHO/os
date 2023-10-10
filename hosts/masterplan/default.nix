@@ -45,7 +45,7 @@
 
           users.users.naho = {
             enable = true;
-            insecureInitialHashedPassword = true;
+            insecurePassword = true;
           };
         };
 
@@ -63,7 +63,16 @@
           persistence."/persistent".directories = ["/etc/ssh"];
         };
 
-        fileSystems."/persistent".neededForBoot = true;
+        fileSystems = {
+          # https://github.com/ryantm/agenix/issues/45
+          "/etc/ssh" = {
+            depends = ["/persistent"];
+            neededForBoot = true;
+          };
+
+          "/persistent".neededForBoot = true;
+        };
+
         nixpkgs.config.allowUnfree = true;
         programs.dconf.enable = true;
         services.printing.enable = true;

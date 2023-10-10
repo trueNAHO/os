@@ -11,7 +11,7 @@ in {
       lib.mkEnableOption
       "${cfg.users.users.naho.description}'s user account";
 
-    insecureInitialHashedPassword = lib.mkEnableOption ''
+    insecurePassword = lib.mkEnableOption ''
       the insecure default initial hashed password for
       ${cfg.users.users.naho.description}'s user account. Do not use this option
       for online accounts.
@@ -19,6 +19,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    age.secrets.usersUsersNahoPasswordFile.file = ./passwordFile.age;
     programs.fish.enable = true;
 
     users.users.naho = lib.mkMerge [
@@ -29,8 +30,8 @@ in {
         shell = pkgs.fish;
       }
 
-      (lib.mkIf cfg.insecureInitialHashedPassword {
-        initialHashedPassword = "$y$j9T$YJDW55iEpE5Fro9oJYwqQ.$.B4KpKNRq9JkDO1GKtlVq/78CJJboZ1GjEt4uvQbvm6";
+      (lib.mkIf cfg.insecurePassword {
+        hashedPasswordFile = config.age.secrets.usersUsersNahoPasswordFile.path;
       })
     ];
   };
