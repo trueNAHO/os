@@ -4,15 +4,15 @@
       {
         imports = [
           "${inputs.impermanence}/nixos.nix"
-          ../../modules/networking.nix
-          ../../modules/nix/flake.nix
-          ../../modules/nix/optimisation.nix
-          ../../modules/services/auto-cpufreq.nix
-          ../../modules/services/openssh.nix
-          ../../modules/services/xserver/desktopManager.nix
-          ../../modules/services/xserver/displayManager.nix
-          ../../modules/sound.nix
-          ../../modules/users/users/naho.nix
+          ../../modules/networking
+          ../../modules/nix/flake
+          ../../modules/nix/optimisation
+          ../../modules/services/auto-cpufreq
+          ../../modules/services/openssh
+          ../../modules/services/xserver/desktopManager
+          ../../modules/services/xserver/displayManager
+          ../../modules/sound
+          ../../modules/users/users/naho
           ./disko-config.nix
           ./hardware-configuration.nix
           inputs.agenix.nixosModules.default
