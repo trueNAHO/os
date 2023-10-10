@@ -15,6 +15,7 @@
           ../../modules/users/users/naho.nix
           ./disko-config.nix
           ./hardware-configuration.nix
+          inputs.agenix.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.nixosHardware.nixosModules.tuxedo-pulse-15-gen2
         ];

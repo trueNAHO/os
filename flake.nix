@@ -2,6 +2,11 @@
   description = "NAHO's NixOS Flake";
 
   inputs = {
+    agenix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:ryantm/agenix";
+    };
+
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
