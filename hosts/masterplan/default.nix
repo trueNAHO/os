@@ -24,6 +24,7 @@
           networking = {
             enable = true;
             hostName = "masterplan";
+            wpa_gui.enable = true;
           };
 
           nix = {

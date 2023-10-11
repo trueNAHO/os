@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.networking;
@@ -19,12 +20,29 @@ in {
 
       description = lib.mdDoc "Equivalent 'networking.hostName' attribute.";
     };
+
+    wpa_gui.enable = lib.mkEnableOption "wpa_gui";
   };
 
   config = lib.mkIf cfg.enable {
+    age.secrets.networkingWirelessEnvironmentFile.file = ./environmentFile.age;
+    environment.systemPackages = lib.mkIf cfg.wpa_gui.enable [pkgs.wpa_supplicant_gui];
+
     networking = {
       hostName = cfg.hostName;
-      networkmanager.enable = true;
+
+      wireless = {
+        enable = true;
+        environmentFile =
+          config.age.secrets.networkingWirelessEnvironmentFile.path;
+
+        networks = {
+          NETGEAR57-5G.psk = "@NETGEAR57_5G_psk@";
+          NETGEAR57.psk = "@NETGEAR57_psk@";
+        };
+
+        userControlled.enable = true;
+      };
     };
   };
 }
