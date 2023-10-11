@@ -9,8 +9,6 @@
           ../../modules/nix/optimisation
           ../../modules/services/auto-cpufreq
           ../../modules/services/openssh
-          ../../modules/services/xserver/desktopManager
-          ../../modules/services/xserver/displayManager
           ../../modules/sound
           ../../modules/users/users/naho
           ./disko-config.nix
@@ -35,11 +33,6 @@
           services = {
             auto-cpufreq.enable = true;
             openssh.enable = true;
-
-            xserver = {
-              desktopManager.enable = true;
-              displayManager.enable = true;
-            };
           };
 
           sound.enable = true;
