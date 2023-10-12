@@ -39,6 +39,14 @@ in {
         networks = {
           NETGEAR57-5G.psk = "@NETGEAR57_5G_psk@";
           NETGEAR57.psk = "@NETGEAR57_psk@";
+
+          eduroam.auth = ''
+            anonymous_identity="@eduroam_anonymous_identity@"
+            eap=PWD
+            identity="@eduroam_identity@"
+            key_mgmt=WPA-EAP
+            password="@eduroam_password@"
+          '';
         };
 
         userControlled.enable = true;
