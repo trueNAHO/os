@@ -7,6 +7,7 @@
           ../../modules/networking
           ../../modules/nix/flake
           ../../modules/nix/optimisation
+          ../../modules/programs/hyprland
           ../../modules/services/auto-cpufreq
           ../../modules/services/openssh
           ../../modules/sound
@@ -29,6 +30,8 @@
             flake.enable = true;
             optimisation.enable = true;
           };
+
+          programs.hyprland.enable = true;
 
           services = {
             auto-cpufreq.enable = true;
