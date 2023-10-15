@@ -57,7 +57,11 @@
 
         environment = {
           etc."machine-id".text = "c9afd40dc75e45c593c2fe07274e4395";
-          persistence."/persistent".directories = ["/etc/ssh"];
+
+          persistence."/persistent".directories = [
+            "/etc/ssh"
+            "/var/lib/systemd/timers"
+          ];
         };
 
         fileSystems = {
