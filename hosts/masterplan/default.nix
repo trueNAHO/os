@@ -74,7 +74,11 @@
           "/persistent".neededForBoot = true;
         };
 
-        hardware.enableAllFirmware = true;
+        hardware = {
+          amdgpu.loadInInitrd = false;
+          enableAllFirmware = true;
+        };
+
         nixpkgs.config.allowUnfree = true;
         programs.dconf.enable = true;
         services.printing.enable = true;
