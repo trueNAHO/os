@@ -31,6 +31,7 @@
             optimisation.enable = true;
           };
 
+          # Add due to user requirement.
           programs.hyprland.enable = true;
 
           services = {
@@ -80,7 +81,10 @@
         };
 
         nixpkgs.config.allowUnfree = true;
+
+        # Add due to user requirement.
         programs.dconf.enable = true;
+
         services.printing.enable = true;
 
         system = {
