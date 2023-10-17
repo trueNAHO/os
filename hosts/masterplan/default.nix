@@ -84,6 +84,7 @@
 
         # Add due to user requirement.
         programs.dconf.enable = true;
+        security.pam.services.swaylock = {};
 
         services.printing.enable = true;
 
