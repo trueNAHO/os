@@ -25,7 +25,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets.networkingWirelessEnvironmentFile.file = ./environmentFile.age;
+    age.secrets = {
+      networkingWirelessEnvironmentFile.file = ./environmentFile.age;
+
+      networkingWirelessNetworksEduroamAuthCaCert.file =
+        ./eduroamAuthCaCert.age;
+    };
 
     environment.systemPackages =
       lib.mkIf cfg.wpa_gui.enable [pkgs.wpa_supplicant_gui];
@@ -43,11 +48,16 @@ in {
           NETGEAR57.psk = "@NETGEAR57_psk@";
 
           eduroam.auth = ''
+            altsubject_match="DNS:guest.uni.lux;DNS:ise.uni.lu;DNS:sponsor.uni.lux"
             anonymous_identity="@eduroam_anonymous_identity@"
-            eap=PWD
+            ca_cert="${config.age.secrets.networkingWirelessNetworksEduroamAuthCaCert.path}"
+            eap=TTLS
+            group=CCMP TKIP
             identity="@eduroam_identity@"
             key_mgmt=WPA-EAP
+            pairwise=CCMP
             password="@eduroam_password@"
+            phase2="auth=MSCHAPV2"
           '';
         };
 
