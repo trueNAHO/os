@@ -26,7 +26,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     age.secrets.networkingWirelessEnvironmentFile.file = ./environmentFile.age;
-    environment.systemPackages = lib.mkIf cfg.wpa_gui.enable [pkgs.wpa_supplicant_gui];
+
+    environment.systemPackages =
+      lib.mkIf cfg.wpa_gui.enable [pkgs.wpa_supplicant_gui];
 
     networking = {
       hostName = cfg.hostName;
