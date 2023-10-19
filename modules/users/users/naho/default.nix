@@ -25,7 +25,7 @@ in {
     users.users.naho = lib.mkMerge [
       {
         description = "NAHO";
-        extraGroups = ["networkmanager" "wheel"];
+        extraGroups = ["wheel"];
         isNormalUser = true;
         shell = pkgs.fish;
       }
