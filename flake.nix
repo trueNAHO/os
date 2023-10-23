@@ -14,7 +14,7 @@
 
     flakeUtils.url = "github:numtide/flake-utils";
     impermanence.url = "github:nix-community/impermanence";
-    nixosHardware.url = "github:trueNAHO/nixos-hardware/tuxedo-pulse-15-gen-2";
+    nixosHardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     preCommitHooks = {

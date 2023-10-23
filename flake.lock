@@ -157,16 +157,15 @@
     },
     "nixosHardware": {
       "locked": {
-        "lastModified": 1697464471,
-        "narHash": "sha256-WhvOgy0n2Fy+2hwjLlOCAIJg6ej0R0oQlDdVcSNvMF8=",
-        "owner": "trueNAHO",
+        "lastModified": 1698053470,
+        "narHash": "sha256-sP8D/41UiwC2qn0X40oi+DfuVzNHMROqIWdSdCI/AYA=",
+        "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "b30a60cd33e497007fee6bcdca22ebdc376233d8",
+        "rev": "80d98a7d55c6e27954a166cb583a41325e9512d7",
         "type": "github"
       },
       "original": {
-        "owner": "trueNAHO",
-        "ref": "tuxedo-pulse-15-gen-2",
+        "owner": "NixOS",
         "repo": "nixos-hardware",
         "type": "github"
       }
