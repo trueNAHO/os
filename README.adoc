@@ -1,0 +1,23 @@
+= OS
+
+== About
+
+https://github.com/trueNAHO[NAHO]'s https://nixos.org[NixOS] configurations.
+
+== Hosts
+
+* link:hosts/masterplan/README.adoc[masterplan]
+
+== See Also
+
+* https://github.com/trueNAHO/dotfiles[NAHO's dotfiles]
+
+== Contributing
+
+To contribute, please review link:docs/contributing.adoc[our contribution
+guidelines].
+
+== License
+
+This project is licensed under link:LICENSE[GNU GENERAL PUBLIC LICENSE Version
+3].

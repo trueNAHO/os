@@ -1,0 +1,89 @@
+# Masterplan
+
+.Wipe and Format all Disks
+[%collapsible]
+====
+[IMPORTANT]
+The following operations wipe and format all disks, leading to irreversible data
+loss.
+
+The following two code snippets wipe and format all disks for the `masterplan`
+host with https://grahamc.com/blog/erase-your-darlings[impermanent]
+link:disko-config.nix[FAT32 boot, encrypted Btrfs root, and swap partitions].
+
+To https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk[
+prepare the disk by overwriting it with a stream of random bytes],
+https://wiki.archlinux.org/title/Securely_wipe_disk#shred[shred it] by running:
+
+[,bash]
+----
+shred --random-source=/dev/urandom --verbose /dev/nvme0n1
+----
+
+Then, encrypt and format all disks for the `masterplan` host by running:
+
+[,bash]
+----
+(
+  set -e
+
+  trap 'rm --force "$disko_config" "$password_file"' EXIT
+
+  disko_config="$(mktemp)"
+
+  curl \
+    --output "$disko_config" \
+    https://raw.githubusercontent.com/trueNAHO/os/master/hosts/masterplan/disko-config.nix
+
+  password_file="$(mktemp)"
+
+  read -p 'Disk encryption password: ' -rs password
+  printf '%s' "$password" >"$password_file"
+
+  nix run \
+    --extra-experimental-features flakes \
+    --extra-experimental-features nix-command \
+    github:nix-community/disko \
+    -- \
+    --arg passwordFile "\"$password_file\"" \
+    --mode disko \
+    "$disko_config"
+)
+----
+====
+
+To clone the latest flake of the `masterplan` host to `/mnt/etc/nixos`, run:
+
+[,bash]
+----
+nix flake clone \
+  --dest /mnt/etc/nixos \
+  --extra-experimental-features flakes \
+  --extra-experimental-features nix-command \
+  github:trueNAHO/os
+----
+
+Optionally, update the hardware configuration of the `masterplan` host with:
+
+[,bash]
+----
+nixos-generate-config \
+  --no-filesystems \
+  --root /mnt \
+  --show-hardware-config \
+  >/mnt/etc/nixos/hosts/masterplan/hardware-configuration.nix
+----
+
+Then, install the `masterplan` host with:
+
+[,bash]
+----
+nixos-install --flake /mnt/etc/nixos#masterplan
+----
+
+Finally, reboot the system with:
+
+[,bash]
+----
+reboot
+----
