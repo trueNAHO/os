@@ -40,7 +40,7 @@
               };
 
               extraOpenArgs = ["--allow-discards"];
-              name = "crypted";
+              name = "luks";
               passwordFile = passwordFile;
               type = "luks";
             };
