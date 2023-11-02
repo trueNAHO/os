@@ -47,9 +47,14 @@
             hooks = {
               alejandra.enable = true;
               convco.enable = true;
+              typos.enable = true;
             };
 
-            settings.alejandra.verbosity = "quiet";
+            settings = {
+              alejandra.verbosity = "quiet";
+              typos.exclude = "*.age";
+            };
+
             src = ./.;
           };
         };
