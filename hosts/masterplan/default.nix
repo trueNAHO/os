@@ -79,8 +79,6 @@
 
         nixpkgs.config.allowUnfree = true;
 
-        services.printing.enable = true;
-
         system = {
           autoUpgrade = {
             enable = true;
