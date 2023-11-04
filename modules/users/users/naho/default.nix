@@ -6,6 +6,8 @@
 }: let
   cfg = config.modules.users.users.naho;
 in {
+  imports = [../../../programs/hyprland];
+
   options.modules.users.users.naho = {
     enable =
       lib.mkEnableOption
@@ -16,23 +18,39 @@ in {
       ${cfg.users.users.naho.description}'s user account. Do not use this option
       for online accounts.
     '';
+
+    userConfigurationRequirements = lib.mkEnableOption ''
+      ${cfg.users.users.naho.description}'s user configuration requirements:
+      https://github.com/trueNAHO/dotfiles
+    '';
   };
 
-  config = lib.mkIf cfg.enable {
-    age.secrets.usersUsersNahoPasswordFile.file = ./passwordFile.age;
-    programs.fish.enable = true;
+  config = lib.mkIf cfg.enable (lib.mkMerge [
+    {
+      age.secrets.usersUsersNahoPasswordFile.file = ./passwordFile.age;
 
-    users.users.naho = lib.mkMerge [
-      {
+      users.users.naho = {
         description = "NAHO";
         extraGroups = ["wheel"];
         isNormalUser = true;
-        shell = pkgs.fish;
-      }
+      };
+    }
 
-      (lib.mkIf cfg.insecurePassword {
-        hashedPasswordFile = config.age.secrets.usersUsersNahoPasswordFile.path;
-      })
-    ];
-  };
+    (lib.mkIf cfg.insecurePassword {
+      users.users.naho.hashedPasswordFile =
+        config.age.secrets.usersUsersNahoPasswordFile.path;
+    })
+
+    (lib.mkIf cfg.userConfigurationRequirements {
+      modules.programs.hyprland.enable = true;
+
+      programs = {
+        dconf.enable = true;
+        fish.enable = true;
+      };
+
+      security.pam.services.swaylock = {};
+      users.users.naho.shell = pkgs.fish;
+    })
+  ]);
 }

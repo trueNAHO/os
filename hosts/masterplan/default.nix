@@ -7,7 +7,6 @@
           ../../modules/networking
           ../../modules/nix/flake
           ../../modules/nix/optimisation
-          ../../modules/programs/hyprland
           ../../modules/services/auto-cpufreq
           ../../modules/services/openssh
           ../../modules/sound
@@ -31,9 +30,6 @@
             optimisation.enable = true;
           };
 
-          # Add due to user requirement.
-          programs.hyprland.enable = true;
-
           services = {
             auto-cpufreq.enable = true;
             openssh.enable = true;
@@ -44,6 +40,7 @@
           users.users.naho = {
             enable = true;
             insecurePassword = true;
+            userConfigurationRequirements = true;
           };
         };
 
@@ -81,10 +78,6 @@
         };
 
         nixpkgs.config.allowUnfree = true;
-
-        # Add due to user requirement.
-        programs.dconf.enable = true;
-        security.pam.services.swaylock = {};
 
         services.printing.enable = true;
 
