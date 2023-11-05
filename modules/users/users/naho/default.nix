@@ -50,6 +50,7 @@ in {
       };
 
       security.pam.services.swaylock = {};
+      services.udisks2.enable = true;
       users.users.naho.shell = pkgs.fish;
     })
   ]);
