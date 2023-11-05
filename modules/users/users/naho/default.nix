@@ -13,13 +13,13 @@ in {
       lib.mkEnableOption
       "${cfg.users.users.naho.description}'s user account";
 
-    insecurePassword = lib.mkEnableOption ''
+    enableInsecurePassword = lib.mkEnableOption ''
       the insecure default initial hashed password for
       ${cfg.users.users.naho.description}'s user account. Do not use this option
       for online accounts.
     '';
 
-    userConfigurationRequirements = lib.mkEnableOption ''
+    enableUserConfigurationRequirements = lib.mkEnableOption ''
       ${cfg.users.users.naho.description}'s user configuration requirements:
       https://github.com/trueNAHO/dotfiles
     '';
@@ -36,12 +36,12 @@ in {
       };
     }
 
-    (lib.mkIf cfg.insecurePassword {
+    (lib.mkIf cfg.enableInsecurePassword {
       users.users.naho.hashedPasswordFile =
         config.age.secrets.usersUsersNahoPasswordFile.path;
     })
 
-    (lib.mkIf cfg.userConfigurationRequirements {
+    (lib.mkIf cfg.enableUserConfigurationRequirements {
       modules.programs.hyprland.enable = true;
 
       programs = {

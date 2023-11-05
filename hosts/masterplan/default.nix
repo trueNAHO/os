@@ -39,8 +39,8 @@
 
           users.users.naho = {
             enable = true;
-            insecurePassword = true;
-            userConfigurationRequirements = true;
+            enableInsecurePassword = true;
+            enableUserConfigurationRequirements = true;
           };
         };
 
