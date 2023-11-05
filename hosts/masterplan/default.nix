@@ -8,6 +8,7 @@
           ../../modules/nix/flake
           ../../modules/nix/optimisation
           ../../modules/services/auto-cpufreq
+          ../../modules/services/btrbk
           ../../modules/services/openssh
           ../../modules/sound
           ../../modules/users/users/naho
@@ -32,6 +33,7 @@
 
           services = {
             auto-cpufreq.enable = true;
+            btrbk.enable = true;
             openssh.enable = true;
           };
 
