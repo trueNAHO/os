@@ -7,6 +7,7 @@
           ../../modules/networking
           ../../modules/nix/flake
           ../../modules/nix/optimisation
+          ../../modules/security/sudo
           ../../modules/services/auto-cpufreq
           ../../modules/services/btrbk
           ../../modules/services/openssh
@@ -30,6 +31,8 @@
             flake.enable = true;
             optimisation.enable = true;
           };
+
+          security.sudo.enable = true;
 
           services = {
             auto-cpufreq.enable = true;
