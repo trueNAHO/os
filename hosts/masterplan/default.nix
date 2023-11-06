@@ -5,8 +5,9 @@
         imports = [
           "${inputs.impermanence}/nixos.nix"
           ../../modules/networking
-          ../../modules/nix/flake
-          ../../modules/nix/optimisation
+          ../../modules/nix/gc
+          ../../modules/nix/settings/auto-optimise-store
+          ../../modules/nix/settings/experimental-features
           ../../modules/security/sudo
           ../../modules/services/auto-cpufreq
           ../../modules/services/btrbk
@@ -28,8 +29,12 @@
           };
 
           nix = {
-            flake.enable = true;
-            optimisation.enable = true;
+            gc.enable = true;
+
+            settings = {
+              auto-optimise-store.enable = true;
+              experimental-features.enable = true;
+            };
           };
 
           security.sudo.enable = true;
