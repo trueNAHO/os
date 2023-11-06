@@ -4,8 +4,7 @@
   ...
 }: {
   options.modules.services.auto-cpufreq.enable =
-    lib.mkEnableOption
-    "auto-cpufreq";
+    lib.mkEnableOption "auto-cpufreq";
 
   config = lib.mkIf config.modules.services.auto-cpufreq.enable {
     services.auto-cpufreq = {
