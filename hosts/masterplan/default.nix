@@ -24,7 +24,11 @@
         modules = {
           agenix.nixosModules.enable = true;
           disko.nixosModules.enable = true;
-          impermanence.nixos.enable = true;
+
+          impermanence.nixos = {
+            enable = true;
+            path = "/persistent";
+          };
 
           nixos = {
             networking = {
