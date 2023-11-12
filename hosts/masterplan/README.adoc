@@ -15,14 +15,14 @@ To https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk[
 prepare the disk by overwriting it with a stream of random bytes],
 https://wiki.archlinux.org/title/Securely_wipe_disk#shred[shred it] by running:
 
-[,bash]
+,bash]
 ----
 shred --random-source=/dev/urandom --verbose /dev/nvme0n1
 ----
 
 Then, encrypt and format all disks for the `masterplan` host by running:
 
-[,bash]
+,bash]
 ----
 (
   set -e
@@ -54,7 +54,7 @@ Then, encrypt and format all disks for the `masterplan` host by running:
 
 To clone the latest flake of the `masterplan` host to `/mnt/etc/nixos`, run:
 
-[,bash]
+,bash]
 ----
 nix flake clone \
   --dest /mnt/etc/nixos \
@@ -65,7 +65,7 @@ nix flake clone \
 
 Optionally, update the hardware configuration of the `masterplan` host with:
 
-[,bash]
+,bash]
 ----
 nixos-generate-config \
   --no-filesystems \
@@ -76,14 +76,14 @@ nixos-generate-config \
 
 Then, install the `masterplan` host with:
 
-[,bash]
+,bash]
 ----
 nixos-install --flake /mnt/etc/nixos#masterplan
 ----
 
 Finally, reboot the system with:
 
-[,bash]
+,bash]
 ----
 reboot
 ----
