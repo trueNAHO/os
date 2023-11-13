@@ -12,6 +12,7 @@
           ../../modules/nixos/nix/settings/experimental-features
           ../../modules/nixos/security/sudo
           ../../modules/nixos/services/auto-cpufreq
+          ../../modules/nixos/services/borgbackup
           ../../modules/nixos/services/btrbk
           ../../modules/nixos/services/openssh
           ../../modules/nixos/sound
@@ -50,6 +51,13 @@
 
             services = {
               auto-cpufreq.enable = true;
+
+              borgbackup = {
+                enable = true;
+                encryption.mode = "repokey";
+                repo = "/mnt/borgbackup";
+              };
+
               btrbk.enable = true;
               openssh.enable = true;
             };

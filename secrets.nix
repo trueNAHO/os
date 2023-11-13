@@ -5,5 +5,6 @@ let
 in {
   "modules/nixos/networking/eduroamAuthCaCert.age".publicKeys = publicKeys;
   "modules/nixos/networking/environmentFile.age".publicKeys = publicKeys;
+  "modules/nixos/services/borgbackup/home.age".publicKeys = publicKeys;
   "modules/nixos/users/users/naho/passwordFile.age".publicKeys = publicKeys;
 }
