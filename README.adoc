@@ -6,7 +6,7 @@ https://github.com/trueNAHO[NAHO]'s https://nixos.org[NixOS] configurations.
 
 == Hosts
 
-* link:hosts/masterplan/README.adoc[masterplan]
+* link:hosts/masterplan/README.adoc[`masterplan`]
 
 == See Also
 
