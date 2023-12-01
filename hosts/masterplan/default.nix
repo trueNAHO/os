@@ -74,16 +74,23 @@
           nixosHardware.nixosModules.tuxedo-pulse-15-gen2.enable = true;
         };
 
-        boot.loader = {
-          efi.canTouchEfiVariables = true;
+        boot = {
+          kernelParams = [
+            "tuxedo_keyboard.mode=0"
+          ];
 
-          systemd-boot = {
-            enable = true;
-            editor = false;
+          loader = {
+            efi.canTouchEfiVariables = true;
+
+            systemd-boot = {
+              enable = true;
+              editor = false;
+            };
           };
         };
 
         environment.etc."machine-id".text = "c9afd40dc75e45c593c2fe07274e4395";
+        hardware.tuxedo-keyboard.enable = true;
         nixpkgs.config.allowUnfree = true;
 
         system = {
