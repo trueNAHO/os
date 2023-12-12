@@ -1,4 +1,20 @@
-# Masterplan
+= os.hosts.masterplan(7)
+:nixos: https://nixos.org
+:os-7: https://github.com/trueNAHO/os/blob/master/README.adoc
+:erase-your-darlings: https://grahamc.com/blog/erase-your-darlings
+:disko-config-nix: https://github.com/trueNAHO/os/blob/master/hosts/masterplan/disko-config.nix
+:data-at-rest-encryption-preparing-the-disk: https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk
+:securely-wipe-disk-shred: https://wiki.archlinux.org/title/Securely_wipe_disk#shred
+
+== Name
+
+os.hosts.masterplan - NixOS configuration for the masterplan host
+
+== Description
+
+{nixos}[NixOS] configuration for the `masterplan` host
+
+== Usage
 
 .Wipe and Format all Disks
 [%collapsible]
@@ -8,12 +24,12 @@ The following operations wipe and format all disks, leading to irreversible data
 loss.
 
 The following two code snippets wipe and format all disks for the `masterplan`
-host with https://grahamc.com/blog/erase-your-darlings[impermanent]
-link:disko-config.nix[FAT32 boot, encrypted Btrfs root, and swap partitions].
+host with {erase-your-darlings}[impermanent] {disko-config-nix}[FAT32 boot,
+encrypted Btrfs root, and swap partitions].
 
-To https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk[
-prepare the disk by overwriting it with a stream of random bytes],
-https://wiki.archlinux.org/title/Securely_wipe_disk#shred[shred it] by running:
+To {data-at-rest-encryption-preparing-the-disk}[prepare the disk by overwriting
+it with a stream of random bytes], {securely-wipe-disk-shred}[shred it] by
+running:
 
 [,bash]
 ----
@@ -87,3 +103,7 @@ Finally, reboot the system with:
 ----
 reboot
 ----
+
+== See Also
+
+{os-7}[os(7)]

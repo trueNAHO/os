@@ -1,25 +1,42 @@
-= OS
+= os(7)
+:configuration-nix-5: https://www.mankier.com/5/configuration.nix
+:license: https://github.com/trueNAHO/os/blob/master/LICENSE
+:naho-dotfiles: https://github.com/trueNAHO/dotfiles
+:naho: https://github.com/trueNAHO
+:nix-conf-5: https://nixos.org/manual/nix/unstable/command-ref/conf-file.html
+:nixos-generate-config-8: https://www.mankier.com/8/nixos-option
+:nixos-install-8: https://www.mankier.com/8/nixos-install
+:nixos-option-8: https://www.mankier.com/8/nixos-option
+:nixos-rebuild-8: https://www.mankier.com/8/nixos-rebuild
+:nixos: https://nixos.org
+:os-code-of-conduct-7: https://github.com/trueNAHO/os/blob/master/docs/code_of_conduct.adoc
+:os-contributing-7: https://github.com/trueNAHO/os/blob/master/docs/contributing.adoc
+:os-hosts-masterplan: https://github.com/trueNAHO/os/blob/master/hosts/masterplan/README.adoc
+:version-control-visualization: https://github.com/trueNAHO/trueNAHO/blob/master/version_control_visualization/repositories/os/README.adoc
 
-== About
+== Name
 
-https://github.com/trueNAHO[NAHO]'s https://nixos.org[NixOS] configurations.
+os - NAHO's NixOS configurations.
+
+== Description
+
+{naho}[NAHO]'s {nixos}[NixOS] configurations.
 
 == Hosts
 
-* link:hosts/masterplan/README.adoc[`masterplan`]
+* {os-hosts-masterplan}[os.hosts.masterplan(7)]
 
 == See Also
 
-* https://github.com/trueNAHO/dotfiles[NAHO's dotfiles]
-* https://github.com/trueNAHO/trueNAHO/blob/master/version_control_visualization/repositories/os/README.adoc[
-  Version Control Visualization]
-
-== Contributing
-
-To contribute, please review link:docs/contributing.adoc[our contribution
-guidelines].
-
-== License
-
-This project is licensed under link:LICENSE[GNU GENERAL PUBLIC LICENSE Version
-3].
+{license}[License],
+{naho-dotfiles}[NAHO's dotfiles],
+{version-control-visualization}[Version Control Visualization],
+{configuration-nix-5}[configuration.nix(5)],
+{nix-conf-5}[nix.conf(5)],
+{nixos-generate-config-8}[nixos-generate-config(8)],
+{nixos-install-8}[nixos-install(8)],
+{nixos-option-8}[nixos-option(8)],
+{nixos-rebuild-8}[nixos-rebuild(8)],
+{os-code-of-conduct-7}[os.code-of-conduct(7)],
+{os-contributing-7}[os.contributing(7)],
+{os-hosts-masterplan}[os.hosts.masterplan(7)]
