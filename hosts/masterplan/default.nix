@@ -5,6 +5,7 @@
         imports = [
           ../../modules/agenix/nixosModules
           ../../modules/disko/nixosModules
+          ../../modules/environment/systemPackages/os
           ../../modules/impermanence/nixos
           ../../modules/nixos/networking
           ../../modules/nixos/nix/gc
@@ -25,6 +26,7 @@
         modules = {
           agenix.nixosModules.enable = true;
           disko.nixosModules.enable = true;
+          environment.systemPackages.os.enable = true;
 
           impermanence.nixos = {
             enable = true;
