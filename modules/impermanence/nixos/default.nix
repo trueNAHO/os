@@ -4,7 +4,10 @@
   lib,
   ...
 }: {
-  imports = ["${inputs.impermanence}/nixos.nix" ../../agenix/nixosModules];
+  imports = [
+    "${inputs.impermanence}/nixos.nix"
+    ../../agenix/nixosModules/default
+  ];
 
   options.modules.impermanence.nixos = {
     enable = lib.mkEnableOption "impermanence";
@@ -21,7 +24,7 @@
     cfg = config.modules.impermanence.nixos;
   in
     lib.mkIf cfg.enable {
-      modules.agenix.nixosModules.enable = true;
+      modules.agenix.nixosModules.default.enable = true;
 
       environment.persistence.${cfg.path}.directories = [
         "/etc/ssh"

@@ -5,7 +5,7 @@
 }: let
   cfg = config.modules.nixos.services.borgbackup;
 in {
-  imports = [../../../agenix/nixosModules];
+  imports = [../../../agenix/nixosModules/default];
 
   options.modules.nixos.services.borgbackup = {
     enable = lib.mkEnableOption "borgbackup";
@@ -36,7 +36,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    modules.agenix.nixosModules.enable = true;
+    modules.agenix.nixosModules.default.enable = true;
     age.secrets.servicesBorgbackupJobsHome.file = ./home.age;
 
     services.borgbackup.jobs.home = {

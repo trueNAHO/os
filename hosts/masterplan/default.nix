@@ -3,7 +3,7 @@
     modules = [
       {
         imports = [
-          ../../modules/agenix/nixosModules
+          ../../modules/agenix/nixosModules/default
           ../../modules/disko/nixosModules
           ../../modules/environment/systemPackages/os
           ../../modules/impermanence/nixos
@@ -24,7 +24,7 @@
         ];
 
         modules = {
-          agenix.nixosModules.enable = true;
+          agenix.nixosModules.default.enable = true;
           disko.nixosModules.enable = true;
           environment.systemPackages.os.enable = true;
 

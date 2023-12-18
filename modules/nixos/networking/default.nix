@@ -6,7 +6,7 @@
 }: let
   cfg = config.modules.nixos.networking;
 in {
-  imports = [../../agenix/nixosModules];
+  imports = [../../agenix/nixosModules/default];
 
   options.modules.nixos.networking = {
     enable = lib.mkEnableOption "networking";
@@ -27,7 +27,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    modules.agenix.nixosModules.enable = true;
+    modules.agenix.nixosModules.default.enable = true;
 
     age.secrets = {
       networkingWirelessEnvironmentFile.file = ./environmentFile.age;

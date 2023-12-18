@@ -6,7 +6,10 @@
 }: let
   cfg = config.modules.nixos.users.users.naho;
 in {
-  imports = [../../../../agenix/nixosModules ../../../programs/hyprland];
+  imports = [
+    ../../../../agenix/nixosModules/default
+    ../../../programs/hyprland
+  ];
 
   options.modules.nixos.users.users.naho = {
     enable =
@@ -27,7 +30,7 @@ in {
 
   config = lib.mkIf cfg.enable (lib.mkMerge [
     {
-      modules.agenix.nixosModules.enable = true;
+      modules.agenix.nixosModules.default.enable = true;
 
       age.secrets.usersUsersNahoPasswordFile.file = ./passwordFile.age;
 
