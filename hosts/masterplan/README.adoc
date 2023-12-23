@@ -2,7 +2,7 @@
 :nixos: https://nixos.org
 :os-7: https://github.com/trueNAHO/os/blob/master/README.adoc
 :erase-your-darlings: https://grahamc.com/blog/erase-your-darlings
-:disko-config-nix: https://github.com/trueNAHO/os/blob/master/hosts/masterplan/disko-config.nix
+:disko-config-nix: https://github.com/trueNAHO/os/blob/master/hosts/masterplan/disko_config.nix
 :data-at-rest-encryption-preparing-the-disk: https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk
 :securely-wipe-disk-shred: https://wiki.archlinux.org/title/Securely_wipe_disk#shred
 
@@ -49,7 +49,7 @@ Then, encrypt and format all disks for the `masterplan` host by running:
 
   curl \
     --output "$disko_config" \
-    https://raw.githubusercontent.com/trueNAHO/os/master/hosts/masterplan/disko-config.nix
+    https://raw.githubusercontent.com/trueNAHO/os/master/hosts/masterplan/disko_config.nix
 
   password_file="$(mktemp)"
 

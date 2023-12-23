@@ -9,18 +9,18 @@
           ../../modules/impermanence/nixos
           ../../modules/nixos/networking
           ../../modules/nixos/nix/gc
-          ../../modules/nixos/nix/settings/auto-optimise-store
-          ../../modules/nixos/nix/settings/experimental-features
+          ../../modules/nixos/nix/settings/auto_optimise_store
+          ../../modules/nixos/nix/settings/experimental_features
           ../../modules/nixos/security/sudo
-          ../../modules/nixos/services/auto-cpufreq
+          ../../modules/nixos/services/auto_cpufreq
           ../../modules/nixos/services/borgbackup
           ../../modules/nixos/services/btrbk
           ../../modules/nixos/services/openssh
           ../../modules/nixos/sound
           ../../modules/nixos/users/users/naho
-          ../../modules/nixosHardware/nixosModules/tuxedo-pulse-15-gen2
-          ./disko-config.nix
-          ./hardware-configuration.nix
+          ../../modules/nixosHardware/nixosModules/tuxedo_pulse_15_gen2
+          ./disko_config.nix
+          ./hardware_configuration.nix
         ];
 
         modules = {
