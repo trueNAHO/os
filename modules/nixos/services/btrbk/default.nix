@@ -11,8 +11,8 @@
 
       settings = {
         snapshot_dir = "/nix/btrbk";
-        snapshot_preserve = "1w";
-        snapshot_preserve_min = "1d";
+        snapshot_preserve = "7d 5w";
+        snapshot_preserve_min = "2d";
         subvolume = "/home";
       };
     };
