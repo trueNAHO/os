@@ -57,8 +57,7 @@ Then, encrypt and format all disks for the `masterplan` host by running:
   printf '%s' "$password" >"$password_file"
 
   nix run \
-    --extra-experimental-features flakes \
-    --extra-experimental-features nix-command \
+    --extra-experimental-features "flakes nix-command" \
     github:nix-community/disko \
     -- \
     --arg passwordFile "\"$password_file\"" \
@@ -74,8 +73,7 @@ To clone the latest flake of the `masterplan` host to `/mnt/etc/nixos`, run:
 ----
 nix flake clone \
   --dest /mnt/etc/nixos \
-  --extra-experimental-features flakes \
-  --extra-experimental-features nix-command \
+  --extra-experimental-features "flakes nix-command" \
   github:trueNAHO/os
 ----
 
