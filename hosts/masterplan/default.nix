@@ -7,6 +7,7 @@
           ../../modules/disko/nixosModules
           ../../modules/environment/systemPackages/os
           ../../modules/impermanence/nixos
+          ../../modules/nixos/boot/blacklistedKernelModules
           ../../modules/nixos/networking
           ../../modules/nixos/nix/gc
           ../../modules/nixos/nix/settings/auto_optimise_store
@@ -34,6 +35,8 @@
           };
 
           nixos = {
+            boot.blacklistedKernelModules.uvcvideo.enable = true;
+
             networking = {
               enable = true;
               hostName = "masterplan";
