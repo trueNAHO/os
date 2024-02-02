@@ -20,7 +20,7 @@
           ../../modules/nixos/sound
           ../../modules/nixos/users/users/naho
           ../../modules/nixosHardware/nixosModules/tuxedo_pulse_15_gen2
-          ./disko_config.nix
+          ./disko.nix
           ./hardware_configuration.nix
         ];
 
