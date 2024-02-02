@@ -11,10 +11,7 @@
     assertions = [
       {
         assertion = config.disko.devices != {};
-
-        message = ''
-          'disko.devices' is undefined: https://github.com/nix-community/disko
-        '';
+        message = "'disko.devices' cannot be empty";
       }
     ];
   };
