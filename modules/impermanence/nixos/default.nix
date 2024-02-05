@@ -13,9 +13,8 @@
     enable = lib.mkEnableOption "impermanence";
 
     path = lib.mkOption {
-      default = "/persistent";
       description = "Path to the persistent storage directory.";
-      example = "/persist";
+      example = "/persistent";
       type = lib.types.str;
     };
   };
