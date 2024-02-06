@@ -36,6 +36,11 @@
                     mountpoint = "/nix";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
+
+                  "/root" = {
+                    mountpoint = "/";
+                    mountOptions = ["compress=zstd" "noatime"];
+                  };
                 };
               };
 
@@ -64,11 +69,6 @@
 
       device = "/dev/nvme0n1";
       type = "disk";
-    };
-
-    nodev."/" = {
-      fsType = "tmpfs";
-      mountOptions = ["defaults" "mode=755" "size=2G"];
     };
   };
 }

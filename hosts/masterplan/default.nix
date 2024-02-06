@@ -30,6 +30,12 @@
           environment.systemPackages.os.enable = true;
 
           impermanence.nixos = {
+            btrfsSubvolumes = {
+              enable = true;
+              rootFilesystem = "/dev/mapper/luks";
+              rootSubvolume = "root";
+            };
+
             enable = true;
             path = "/persistent";
           };
