@@ -46,17 +46,27 @@ in {
         config.age.secrets.usersUsersNahoPasswordFile.path;
     })
 
-    (lib.mkIf cfg.enableUserConfigurationRequirements {
-      modules.nixos.programs.hyprland.enable = true;
+    (lib.mkIf cfg.enableUserConfigurationRequirements (lib.mkMerge [
+      {
+        modules.nixos.programs.hyprland.enable = true;
+      }
 
-      programs = {
-        dconf.enable = true;
-        fish.enable = true;
-      };
+      {
+        programs.dconf.enable = true;
+      }
 
-      security.pam.services.swaylock = {};
-      services.udisks2.enable = true;
-      users.users.naho.shell = pkgs.fish;
-    })
+      {
+        programs.fish.enable = true;
+        users.users.naho.shell = pkgs.fish;
+      }
+
+      {
+        security.pam.services.swaylock = {};
+      }
+
+      {
+        services.udisks2.enable = true;
+      }
+    ]))
   ]);
 }
