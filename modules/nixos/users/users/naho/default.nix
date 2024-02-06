@@ -61,12 +61,6 @@ in {
       }
 
       {
-        programs.virt-manager.enable = true;
-        users.users.naho.extraGroups = ["libvirt"];
-        virtualisation.libvirtd.enable = true;
-      }
-
-      {
         security.pam.services.swaylock = {};
       }
 
