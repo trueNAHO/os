@@ -41,6 +41,18 @@
                     mountpoint = "/";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
+
+                  "/swap" = {
+                    mountOptions = [
+                      "discard=async"
+                      "noatime"
+                      "nodatacow"
+                      "nodatasum"
+                    ];
+
+                    mountpoint = "/swap";
+                    swap.swapfile-0.size = "38G";
+                  };
                 };
               };
 
@@ -48,16 +60,6 @@
               passwordFile = passwordFile;
               settings.allowDiscards = true;
               type = "luks";
-            };
-
-            end = "-38G";
-          };
-
-          swap = {
-            content = {
-              randomEncryption = true;
-              resumeDevice = true;
-              type = "swap";
             };
 
             size = "100%";
