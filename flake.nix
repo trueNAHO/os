@@ -40,6 +40,9 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         checks = {
+          nixosConfigurationsBluetop =
+            self.nixosConfigurations.bluetop.config.system.build.toplevel;
+
           nixosConfigurationsMasterplan =
             self.nixosConfigurations.masterplan.config.system.build.toplevel;
 

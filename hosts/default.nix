@@ -1,1 +1,3 @@
-{inputs, ...}: import ./masterplan {inherit inputs;}
+{inputs, ...}:
+(import ./bluetop {inherit inputs;})
+// (import ./masterplan {inherit inputs;})

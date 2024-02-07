@@ -11,6 +11,7 @@
 :nixos: https://nixos.org
 :os-code-of-conduct-7: https://github.com/trueNAHO/os/blob/master/docs/code_of_conduct.adoc
 :os-contributing-7: https://github.com/trueNAHO/os/blob/master/docs/contributing.adoc
+:os-hosts-bluetop: https://github.com/trueNAHO/os/blob/master/hosts/bluetop/README.adoc
 :os-hosts-masterplan: https://github.com/trueNAHO/os/blob/master/hosts/masterplan/README.adoc
 :version-control-visualization: https://github.com/trueNAHO/trueNAHO/blob/master/version_control_visualization/repositories/os/README.adoc
 
@@ -24,6 +25,7 @@ os - NAHO's NixOS configurations.
 
 == Hosts
 
+* {os-hosts-bluetop}[os.hosts.bluetop(7)]
 * {os-hosts-masterplan}[os.hosts.masterplan(7)]
 
 == See Also

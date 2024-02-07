@@ -1,0 +1,107 @@
+= os.hosts.bluetop(7)
+:nixos: https://nixos.org
+:os-7: https://github.com/trueNAHO/os/blob/master/README.adoc
+:erase-your-darlings: https://grahamc.com/blog/erase-your-darlings
+:disko-nix: https://github.com/trueNAHO/os/blob/master/hosts/bluetop/disko.nix
+:data-at-rest-encryption-preparing-the-disk: https://wiki.archlinux.org/title/Data-at-rest_encryption#Preparing_the_disk
+:securely-wipe-disk-shred: https://wiki.archlinux.org/title/Securely_wipe_disk#shred
+
+== Name
+
+os.hosts.bluetop - NixOS configuration for the bluetop host
+
+== Description
+
+{nixos}[NixOS] configuration for the `bluetop` host
+
+== Usage
+
+.Wipe and Format all Disks
+[%collapsible]
+====
+[IMPORTANT]
+The following operations wipe and format all disks, leading to irreversible data
+loss.
+
+The following two code snippets wipe and format all disks for the `bluetop` host
+with {erase-your-darlings}[impermanent] {disko-config-nix}[FAT32 boot, encrypted
+Btrfs root, and swap partitions].
+
+To {data-at-rest-encryption-preparing-the-disk}[prepare the disk by overwriting
+it with a stream of random bytes], {securely-wipe-disk-shred}[shred it] by
+running:
+
+[,bash]
+----
+shred --random-source=/dev/urandom --verbose /dev/nvme0n1
+----
+
+Then, encrypt and format all disks for the `bluetop` host by running:
+
+[,bash]
+----
+(
+  set -e
+
+  trap 'rm --force "$disko" "$password_file"' EXIT
+
+  disko="$(mktemp)"
+
+  curl \
+    --output "$disko" \
+    https://raw.githubusercontent.com/trueNAHO/os/master/hosts/bluetop/disko.nix
+
+  password_file="$(mktemp)"
+
+  read -p 'Disk encryption password: ' -rs password
+  printf '%s' "$password" >"$password_file"
+
+  nix run \
+    --extra-experimental-features "flakes nix-command" \
+    github:nix-community/disko \
+    -- \
+    --arg passwordFile "\"$password_file\"" \
+    --mode disko \
+    "$disko"
+)
+----
+====
+
+To clone the latest flake of the `bluetop` host to `/mnt/etc/nixos`, run:
+
+[,bash]
+----
+nix flake clone \
+  --dest /mnt/etc/nixos \
+  --extra-experimental-features "flakes nix-command" \
+  github:trueNAHO/os
+----
+
+Optionally, update the hardware configuration of the `bluetop` host with:
+
+[,bash]
+----
+nixos-generate-config \
+  --no-filesystems \
+  --root /mnt \
+  --show-hardware-config \
+  >/mnt/etc/nixos/hosts/bluetop/hardware-configuration.nix
+----
+
+Then, install the `bluetop` host with:
+
+[,bash]
+----
+nixos-install --flake /mnt/etc/nixos#bluetop
+----
+
+Finally, reboot the system with:
+
+[,bash]
+----
+reboot
+----
+
+== See Also
+
+{os-7}[os(7)]
