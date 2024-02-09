@@ -1,0 +1,40 @@
+= os.dev.add-host(8)
+
+== Name
+
+os.dev.add-host - Add a new host
+
+== Configuration
+
+To add a new host, complete the following steps:
+
+. Add the new host configuration to the `hosts/<HOST>` directory
+. Update the `flake.nix` packages and checks
+. Update the `hosts/default.nix` file
+
+== Deployment
+
+To deploy a new host, complete the following steps based on the more complete
+instructions given in `hosts/<HOST>/README.adoc`:
+
+. Clone Repository
+. Format all Disks
+. Update Hardware Configuration
+. Install NixOS
+. `poweroff`
+
+Properly deploying `agenix` requires adding the public SSH fingerprint of the
+new host to the `secrets.nix` file, re-keying all secrets with `agenix --rekey`,
+and providing the SSH keys to `age.identityPaths` defaulting to
+`services.openssh.hostKeys` (`etc/ssh/ssh_host_rsa_key` or
+`/etc/ssh/ssh_host_ed25519_key`). The SSH keys can be deployed in two ways.
+Either the SSH keys are generated and added the repository prior to the
+installation process, or the SSH keys are generated during the installation,
+although this requires patching upstream during the installation process.
+
+Although the generated hardware configuration should be patched upstream, it can
+also be done at a later point, as the installation can be completed by
+overwriting the template hardware configuration in the local repository clone.
+Make sure to that the hardware configuration does not disappear after the
+installation process, by for example adding it to an external drive or storing
+it in the `/persistent` directory.
