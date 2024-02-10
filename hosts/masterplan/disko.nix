@@ -39,9 +39,9 @@
                 };
               };
 
-              extraOpenArgs = ["--allow-discards"];
               name = "luks";
               passwordFile = passwordFile;
+              settings.allowDiscards = true;
               type = "luks";
             };
 
