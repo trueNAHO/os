@@ -31,15 +31,11 @@ os - NAHO's NixOS configurations.
 
 == See Also
 
-{license}[License],
-{naho-disks}[NAHO's disks],
-{naho-dotfiles}[NAHO's dotfiles],
-{version-control-visualization}[Version Control Visualization],
-{configuration-nix-5}[configuration.nix(5)],
-{nix-conf-5}[nix.conf(5)],
+{license}[License], {naho-disks}[NAHO's disks], {naho-dotfiles}[NAHO's
+dotfiles], {version-control-visualization}[Version Control Visualization],
+{configuration-nix-5}[configuration.nix(5)], {nix-conf-5}[nix.conf(5)],
 {nixos-generate-config-8}[nixos-generate-config(8)],
-{nixos-install-8}[nixos-install(8)],
-{nixos-option-8}[nixos-option(8)],
+{nixos-install-8}[nixos-install(8)], {nixos-option-8}[nixos-option(8)],
 {nixos-rebuild-8}[nixos-rebuild(8)],
 {os-code-of-conduct-7}[os.code-of-conduct(7)],
 {os-contributing-7}[os.contributing(7)],
