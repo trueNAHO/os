@@ -1,6 +1,7 @@
 = os(7)
 :configuration-nix-5: https://www.mankier.com/5/configuration.nix
 :license: https://github.com/trueNAHO/os/blob/master/LICENSE
+:naho-disks: https://github.com/trueNAHO/disks
 :naho-dotfiles: https://github.com/trueNAHO/dotfiles
 :naho: https://github.com/trueNAHO
 :nix-conf-5: https://nixos.org/manual/nix/unstable/command-ref/conf-file.html
@@ -31,6 +32,7 @@ os - NAHO's NixOS configurations.
 == See Also
 
 {license}[License],
+{naho-disks}[NAHO's disks],
 {naho-dotfiles}[NAHO's dotfiles],
 {version-control-visualization}[Version Control Visualization],
 {configuration-nix-5}[configuration.nix(5)],
