@@ -12,6 +12,17 @@
       url = "github:nix-community/disko";
     };
 
+    disks = {
+      inputs = {
+        disko.follows = "disko";
+        flakeUtils.follows = "flakeUtils";
+        nixpkgs.follows = "nixpkgs";
+        preCommitHooks.follows = "preCommitHooks";
+      };
+
+      url = "github:trueNAHO/disks";
+    };
+
     flakeUtils.url = "github:numtide/flake-utils";
     impermanence.url = "github:nix-community/impermanence";
     nixosHardware.url = "github:NixOS/nixos-hardware";
@@ -30,6 +41,7 @@
 
   outputs = {
     self,
+    disks,
     flakeUtils,
     nixpkgs,
     preCommitHooks,
@@ -65,6 +77,10 @@
 
         devShells.default = pkgs.mkShell {
           inherit (self.checks.${system}.preCommitHooks) shellHook;
+        };
+
+        packages = {
+          inherit (disks.packages.${system}) disko format mount shred;
         };
       }
     )

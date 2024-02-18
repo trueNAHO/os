@@ -65,6 +65,35 @@
         "type": "github"
       }
     },
+    "disks": {
+      "inputs": {
+        "disko": [
+          "disko"
+        ],
+        "flakeUtils": [
+          "flakeUtils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "preCommitHooks": [
+          "preCommitHooks"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708280559,
+        "narHash": "sha256-STGboqgID7w5z8vk4vqaay9cL4GGvaHFSqZ2C5RMfE8=",
+        "owner": "trueNAHO",
+        "repo": "disks",
+        "rev": "22007673254039f094fdad61c03a1ed075dabf82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "trueNAHO",
+        "repo": "disks",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -220,6 +249,7 @@
       "inputs": {
         "agenix": "agenix",
         "disko": "disko",
+        "disks": "disks",
         "flakeUtils": "flakeUtils",
         "impermanence": "impermanence",
         "nixosHardware": "nixosHardware",

@@ -1,5 +1,6 @@
 = os(7)
 :configuration-nix-5: https://www.mankier.com/5/configuration.nix
+:disks: https://github.com/trueNAHO/disks
 :license: https://github.com/trueNAHO/os/blob/master/LICENSE
 :naho-disks: https://github.com/trueNAHO/disks
 :naho-dotfiles: https://github.com/trueNAHO/dotfiles
@@ -28,6 +29,25 @@ os - NAHO's NixOS configurations.
 
 * {os-hosts-bluetop}[os.hosts.bluetop(7)]
 * {os-hosts-masterplan}[os.hosts.masterplan(7)]
+
+== Packages
+
+[cols="1,100"]
+|===
+| Package | Description
+
+a| `disko`
+| Wraps and locks {disks}[_disks_]'s `disko` package.
+
+a| `format`
+| Wraps and locks {disks}[_disks_]'s `format` package.
+
+a| `mount`
+| Wraps and locks {disks}[_disks_]'s `mount` package.
+
+a| `shred`
+| Wraps and locks {disks}[_disks_]'s `shred` package.
+|===
 
 == See Also
 
