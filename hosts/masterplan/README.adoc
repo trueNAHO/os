@@ -12,9 +12,21 @@ os.hosts.masterplan - NixOS configuration for the masterplan host
 
 == Description
 
-{nixos}[NixOS] configuration for the `masterplan` host
+{nixos}[NixOS] configuration for the `masterplan` host.
 
 == Usage
+
+To clone the latest flake of the `masterplan` host to `<REPOSITORY>`, run:
+
+[,bash]
+----
+nix \
+  --extra-experimental-features "flakes nix-command" \
+  flake \
+  clone \
+  --dest <REPOSITORY> \
+  github:trueNAHO/os
+----
 
 .Wipe and Format all Disks
 [%collapsible]
@@ -23,59 +35,30 @@ os.hosts.masterplan - NixOS configuration for the masterplan host
 The following operations wipe and format all disks, leading to irreversible data
 loss.
 
-The following two code snippets wipe and format all disks for the `masterplan`
-host with {erase-your-darlings}[impermanent] {disko-config-nix}[FAT32 boot,
-encrypted Btrfs root, and swap partitions].
-
 To {data-at-rest-encryption-preparing-the-disk}[prepare the disk by overwriting
 it with a stream of random bytes], {securely-wipe-disk-shred}[shred it] by
 running:
 
 [,bash]
 ----
-shred --random-source=/dev/urandom --verbose /dev/nvme0n1
+nix \
+  --extra-experimental-features "flakes nix-command" \
+  run \
+  <REPOSITORY>#shred \
+  /dev/nvme0n1
 ----
 
-Then, encrypt and format all disks for the `masterplan` host by running:
+Then, format all disks by running:
 
 [,bash]
 ----
-(
-  set -e
-
-  trap 'rm --force "$disko" "$password_file"' EXIT
-
-  disko="$(mktemp)"
-
-  curl \
-    --output "$disko" \
-    https://raw.githubusercontent.com/trueNAHO/os/master/hosts/masterplan/disko.nix
-
-  password_file="$(mktemp)"
-
-  read -p 'Disk encryption password: ' -rs password
-  printf '%s' "$password" >"$password_file"
-
-  nix run \
-    --extra-experimental-features "flakes nix-command" \
-    github:nix-community/disko \
-    -- \
-    --arg passwordFile "\"$password_file\"" \
-    --mode disko \
-    "$disko"
-)
+nix \
+  --extra-experimental-features "flakes nix-command" \
+  run \
+  <REPOSITORY>#format \
+  "$(realpath <REPOSITORY>/hosts/masterplan/disko.nix)"
 ----
 ====
-
-To clone the latest flake of the `masterplan` host to `/mnt/etc/nixos`, run:
-
-[,bash]
-----
-nix flake clone \
-  --dest /mnt/etc/nixos \
-  --extra-experimental-features "flakes nix-command" \
-  github:trueNAHO/os
-----
 
 Optionally, update the hardware configuration of the `masterplan` host with:
 
@@ -85,21 +68,21 @@ nixos-generate-config \
   --no-filesystems \
   --root /mnt \
   --show-hardware-config \
-  >/mnt/etc/nixos/hosts/masterplan/hardware-configuration.nix
+  ><REPOSITORY>/hosts/masterplan/hardware_configuration.nix
 ----
 
 Then, install the `masterplan` host with:
 
 [,bash]
 ----
-nixos-install --flake /mnt/etc/nixos#masterplan
+nixos-install --flake <REPOSITORY>#masterplan
 ----
 
-Finally, reboot the system with:
+Finally, power off the system with:
 
 [,bash]
 ----
-reboot
+poweroff
 ----
 
 == See Also
