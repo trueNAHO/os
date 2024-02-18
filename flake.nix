@@ -51,29 +51,35 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        checks = {
-          nixosConfigurationsBluetop =
-            self.nixosConfigurations.bluetop.config.system.build.toplevel;
+        checks =
+          (
+            pkgs.lib.attrsets.concatMapAttrs
+            (k: v: {"${k}Package" = v;})
+            inputs.self.packages.${system}
+          )
+          // {
+            nixosConfigurationsBluetop =
+              self.nixosConfigurations.bluetop.config.system.build.toplevel;
 
-          nixosConfigurationsMasterplan =
-            self.nixosConfigurations.masterplan.config.system.build.toplevel;
+            nixosConfigurationsMasterplan =
+              self.nixosConfigurations.masterplan.config.system.build.toplevel;
 
-          preCommitHooks = preCommitHooks.lib.${system}.run {
-            hooks = {
-              alejandra.enable = true;
-              convco.enable = true;
-              typos.enable = true;
-              yamllint.enable = true;
+            preCommitHooks = preCommitHooks.lib.${system}.run {
+              hooks = {
+                alejandra.enable = true;
+                convco.enable = true;
+                typos.enable = true;
+                yamllint.enable = true;
+              };
+
+              settings = {
+                alejandra.verbosity = "quiet";
+                typos.exclude = "*.age";
+              };
+
+              src = ./.;
             };
-
-            settings = {
-              alejandra.verbosity = "quiet";
-              typos.exclude = "*.age";
-            };
-
-            src = ./.;
           };
-        };
 
         devShells.default = pkgs.mkShell {
           inherit (self.checks.${system}.preCommitHooks) shellHook;
