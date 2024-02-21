@@ -71,7 +71,7 @@
 
               btrbk = {
                 enable = true;
-                snapshotDir = "/nix/btrbk";
+                snapshotDir = "/btrbk";
               };
 
               openssh.enable = true;

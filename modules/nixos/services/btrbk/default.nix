@@ -8,7 +8,7 @@
 
     snapshotDir = lib.mkOption {
       description = "Path to Btrbk's snapshot directory.";
-      example = "/nix/btrbk";
+      example = "/btrbk";
       type = lib.types.str;
     };
   };
@@ -27,7 +27,5 @@
           subvolume = "/home";
         };
       };
-
-      systemd.tmpfiles.rules = ["d ${cfg.snapshotDir} 700"];
     };
 }

@@ -22,6 +22,11 @@
                 extraArgs = ["-f"];
 
                 subvolumes = {
+                  "/btrbk" = {
+                    mountpoint = "/btrbk";
+                    mountOptions = ["compress=zstd" "noatime"];
+                  };
+
                   "/persistent" = {
                     mountpoint = "/persistent";
                     mountOptions = ["compress=zstd" "noatime"];
