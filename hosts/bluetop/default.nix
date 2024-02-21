@@ -68,7 +68,11 @@
                 repo = "/mnt/borgbackup";
               };
 
-              btrbk.enable = true;
+              btrbk = {
+                enable = true;
+                snapshotDir = "/nix/btrbk";
+              };
+
               openssh.enable = true;
             };
 
