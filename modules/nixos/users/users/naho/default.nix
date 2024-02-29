@@ -62,7 +62,7 @@ in {
 
       {
         programs.virt-manager.enable = true;
-        users.users.naho.extraGroups = ["libvirt"];
+        users.users.naho.extraGroups = ["libvirtd"];
         virtualisation.libvirtd.enable = true;
       }
 
