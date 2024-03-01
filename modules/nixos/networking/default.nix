@@ -50,6 +50,7 @@ in {
         networks = {
           NETGEAR57-5G.psk = "@NETGEAR57_5G_psk@";
           NETGEAR57.psk = "@NETGEAR57_psk@";
+          OEJAB.auth = "key_mgmt=NONE";
 
           eduroam.auth = ''
             altsubject_match="DNS:guest.uni.lux;DNS:ise.uni.lu;DNS:sponsor.uni.lux"
