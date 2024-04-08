@@ -2,6 +2,7 @@
 :configuration-nix-5: https://www.mankier.com/5/configuration.nix
 :disks: https://github.com/trueNAHO/disks
 :license: https://github.com/trueNAHO/os/blob/master/LICENSE
+:logo-raw: https://raw.githubusercontent.com/trueNAHO/logo-nixos/v1.0.0/src/main.svg
 :naho-disks: https://github.com/trueNAHO/disks
 :naho-dotfiles: https://github.com/trueNAHO/dotfiles
 :naho: https://github.com/trueNAHO
@@ -24,6 +25,8 @@ os - NAHO's NixOS configurations.
 == Description
 
 {naho}[NAHO]'s {nixos}[NixOS] configurations.
+
+image::{logo-raw}[NAHO's NixOS Logo, link={logo-raw}, width=100%]
 
 == Hosts
 
